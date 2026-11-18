@@ -28,5 +28,104 @@ nested_tuple = (('one', 'two'), ['three', 'four'])   # кортеж из кор�
 numbers = ((0, (9, 2)), (1, (4, 6, 3), (5, 2, 3), 8, 3))
 print(numbers[0][1][1])
 
+# Используя операторы конкатенации (+) и умножения кортежа на число (*), дополните приведенный ниже код
+# так, чтобы он вывел кортеж:(1, 2, 3, 1, 2, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 11, 12, 13)
+numbers1 = (1, 2, 3)
+numbers2 = (6,)
+numbers3 = (7, 8, 9, 10, 11, 12, 13)
+print((numbers1 * 2) + (numbers2 * 9) + numbers3)
+
+
+# Вам доступен кортеж numbers. Напишите программу, которая выводит сумму минимального и максимального
+# элементов кортежа numbers.
+numbers = (12.5, 3.1415, 2.718, 9.8, 1.414, 1.1618, 1.324)
+n1 = min(numbers)
+n2 = max(numbers)
+num = (n1, n2)
+print(sum(num))
+
+
+numbers = (12.5, 3.1415, 2.718, 9.8, 1.414, 1.1618, 1.324)
+print(sum((min(numbers), max(numbers))))
+
+
+numbers = (12.5, 3.1415, 2.718, 9.8, 1.414, 1.1618, 1.324)
+min_n = numbers[0]
+max_n = numbers[0]
+for i in numbers:
+    if i < min_n:
+        min_n = i
+    if i > max_n:
+        max_n = i
+print(min_n + max_n)
+
+
+# Вам доступен кортеж countries. Напишите программу, которая выводит индекс строки 'Slovenia' в кортеже
+# countries.
+countries = ('Russia', 'Argentina', 'Spain', 'Slovakia', 'Canada', 'Slovenia', 'Italy')
+position = countries.index('Slovenia')
+print(position)
+
+
+# Вам доступен кортеж countries. Напишите программу, которая выводит количество вхождений строки
+# 'Spain' в кортеж countries.
+countries = ('Mexico', 'New Zealand', 'Spain', 'Poland', 'Latvia', 'Spain')
+print(countries.count('Spain'))
+
+
+# Вам доступны переменные city_name и city_year. В переменной city_name содержится строка – название
+# города (например, Владикавказ), а в переменной city_year содержится число – год основания города
+# (например, 1784). Напишите программу, которая выводит кортеж из значений этих двух переменных
+# (сначала название города, затем год основания).
+city_name = 'Владикавказ'
+city_year = 1784
+city = (city_name, city_year)
+print(city)
+
+
+# Вам доступен список tuples. Напишите программу, которая выводит список, содержащий только непустые
+# кортежи исходного списка tuples, не меняя порядка их следования.
+tuples = [(1, 2), (), (3,), ()]
+new_tuples = []
+for i in tuples:
+    if len(i) > 0:
+        new_tuples.append(i)
+print(new_tuples)
+
+
+tuples = [(1, 2), (), (3,), ()]
+non_empty_tuples = [i for i in tuples if i != ()]  # используем списочное выражение
+print(non_empty_tuples)
+
+
+# Вам доступен список tuples. Напишите программу, которая выводит список кортежей на основе списка
+# tuples с последним элементом каждого кортежа, замененным на число 100.
+tuples = [(46, 82), (75,), (3, -4, -10)]
+new_tuples = [tuples[i][:-1] + (100,) for i in range(len(tuples))]
+print(new_tuples)
+
+
+tuples = [(46, 82), (75,), (3, -4, -10)]
+new_tuples = [i[:-1] + (100,) for i in tuples]  # берем каждый элемент списка tuples(каждый кортеж) и
+# берем его без последнего элемента по индексу([:-1]) и прибавляем к нему другой кортеж((100,)).
+print(new_tuples)  # печатаем новый кортеж.
+
+
+tuples = [(46, 82), (75,), (3, -4, -10)]
+new_tuples = []
+for c in tuples:  # идем по элементам списка(по кортежам)
+    k = list(c)  # каждый элемент списка кортеж 'с' преобразуем в список 'к'
+    k[-1] = 100  # последний элемент каждого списка 'к' по индексу заменяем на число 100.
+    new_tuples.append(tuple(k))  # в новый список добавляем элементы 'к', переведенные в кортеж.
+print(new_tuples)
+
+
+tuples = [(46, 82), (75,), (3, -4, -10)]
+for i in range(len(tuples)):
+    tuples[i] = list(tuples[i])
+    tuples[i][-1] = 100
+    tuples[i] = tuple(tuples[i])
+print(tuples)
+
 
 
